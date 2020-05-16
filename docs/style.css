@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+}
+
+
+/*
+    COLORS!
+    #ececec - light White
+
+    #f2a365 - Tan
+
+    #30475e - Deep Blue
+
+    #222831 - Dark Blue
+*/
+
+.background1 {
+    background-color: #ececec;
+    padding: 20px;
+}
+
+body {
+    margin: 0;
+    font-family: 'DM Mono', monospace;
+    background-color: #30475e;
+    color: #dae1e7;
+}
+
+div {
+    padding: 15px 15px;
+    font-size: 30px
+}
+
+p {
+    padding-left: 30px;
+}
+
+p a {
+    padding-left: 30px;
+    text-decoration: none;
+    color: #dae1e7;
+}
+
+p a:hover {
+    color: #dae1e7;
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+}
+
+.footer {
+    font-family: 'Libre Barcode 39 Text', cursive;
+    position: static;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+}
+
+#navbar {
+    overflow: hidden;
+    background-color: #dae1e7;
+    padding: 90px 10px;
+    transition: 0.4s;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 99;
+    text-align: center;
+}
+
+#navbar #logo {
+    color: #30475e;
+    font-size: 65px;
+    font-weight: bold;
+    transition: 0.4s;
+    text-align: center;
+    font-family: 'Major Mono Display', monospace;
+}
+
+@media screen and (max-width: 580px) {
+    #navbar {
+        padding: 20px 10px !important;
+    }
+    #navbar a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+    #navbar-right {
+        float: none;
+    }
+}
+
+
+/* Uh Oh */
+
+ ::-moz-selection,
+ ::selection {
+    background: #ececec;
+    color: #142850;
+    /* Gecko Browsers */
+}
