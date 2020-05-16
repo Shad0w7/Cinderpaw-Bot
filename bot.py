@@ -13,6 +13,7 @@ Verbose = False
 Version = '0.1a'
 # -- Command Based Imports
 from resourceScripts.ships import *
+from resourceScripts.pickname import *
 
 
 # -- Loading Secret Stuff from .env 
@@ -146,15 +147,29 @@ async def test(ctx):
 async def test(ctx):
     await ctx.send("That's my line!!")
 
-@bot.command(name='version', help='Prints Version of Cinderpaw Bot Running!')
+@bot.command(name='version', help='Prints Version of Cinderpaw Bot Running! [Development Tools]')
 async def test(ctx):
     await ctx.send('`>> Version: {0}`'.format(Version))
-# -- SHIPS!!!! --
+# -- Ships <3 <3!!!! --
 
 @bot.command(name='ship', help='Do a ship, with the two names together and a "*" between them (Use Full Name). Example, $ship Firestar*Sandstorm')
 async def test(ctx, arg):
     shipValue = ship(arg.split('*')[0], arg.split('*')[1])
     await ctx.send(":heartpulse: :heartpulse: {0} x {1} is {2}%!!! :heartpulse: :heartpulse:".format(arg.split('*')[0], arg.split('*')[1], shipValue))
+
+# -- Names --
+
+@bot.command(name='warriorname', help='Generate a Warrior Name!')
+async def test(ctx):
+    await ctx.send(warriorName())
+
+@bot.command(name='clanname', help='Generate a Clan Name!')
+async def test(ctx):
+    await ctx.send(clanName())
+
+@bot.command(name='kittyname', help='Generate a Kittypet Name!')
+async def test(ctx):
+    await ctx.send(kittypetName())
 
 # -- Exception Handling --
 

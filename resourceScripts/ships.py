@@ -19,6 +19,18 @@ def ship(n1, n2):
         return "100.00"               
     if shipIt == ("tall", "jake"):
         return "100.00"
+    if shipIt == ("scourge", "fire"):
+        return "-100.00 GET SOME HELP PLEASE"
+    if shipIt == ("holly", "cinder"):
+        return "98.50"
+    if shipIt == ("jay", "halfmoon"):
+        return "97.77"
+    if shipIt[0] == "breezepelt":
+        return "0.00"
+    if shipIt[0] == "darktail":
+        return "0.00"
+    if shipIt == ("crooked", "willow"):
+        return "<3 <3 <3 <3 <3 200.00 <3 <3 <3 <3 <3"
     
     # In the event that shipIt is just random:
     if z == -1:
