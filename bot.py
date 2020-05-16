@@ -10,7 +10,7 @@ import pymongo
 from pymongo import MongoClient
 import time
 Verbose = False
-Version = '0.1a'
+
 # -- Command Based Imports
 from resourceScripts.ships import *
 from resourceScripts.pickname import *
@@ -20,6 +20,9 @@ from resourceScripts.pickname import *
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 CONNECTIONURL = os.getenv('CONNECTION_URL')
+VERSION = os.getenv('VERSION')
+
+Version = str(VERSION)
 
 # -- Setting Up for MongoDB
 cluster = MongoClient(CONNECTIONURL)
