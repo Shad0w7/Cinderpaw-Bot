@@ -1,0 +1,1 @@
+This is like the differnet suppourting scripts that are needed for more complex functions, to not clutter the bot.py SourceCode
