@@ -1,20 +1,29 @@
 # bot.py
 
+# 
+# CREATED BY SHAD0W7#0320
+#
+
 # -- General Setup --
 import os
 import random
 from dotenv import load_dotenv
+import json
+import re
+# discord
 from discord.ext import commands
 import discord
+# pymongo
 import pymongo
 from pymongo import MongoClient
 import time
-Verbose = False
-
-# -- Command Based Imports
+#wikipedia
+import wikipedia
+# external files
 from resourceScripts.ships import *
 from resourceScripts.pickname import *
-
+from resourceScripts.randomCat import *
+Verbose = False
 
 # -- Loading Secret Stuff from .env 
 load_dotenv()
@@ -24,10 +33,13 @@ VERSION = os.getenv('VERSION')
 
 Version = str(VERSION)
 
-# -- Setting Up for MongoDB
+# -- Setting Up for MongoDB --
 cluster = MongoClient(CONNECTIONURL)
-db = cluster["UserData"]
+db = cluster["UserData"] 
 collection = db["UserData"]
+'''
+If you are using a local storage system like dotENV JSON or XML, then replace this, use the builtin data.json file for JSON.
+'''
 
 # -- Setting Up Bot Stuff --
 bot = commands.Bot(command_prefix='$')
@@ -35,7 +47,7 @@ bot = commands.Bot(command_prefix='$')
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord! [ID:{0}]'.format(bot.user.id))
 
-# -- Track Messages --
+# -- Track Messages [XP] --
 @bot.event
 async def on_message(ctx):
     if(ctx.author == bot.user): # make sure its not the bot doing stuff!
@@ -67,13 +79,11 @@ async def on_message(ctx):
         z1 = random.randint(1, 5)
         xp = xp + z1
         collection.update_one({"_id":ctx.author.id}, {"$set":{"xp":xp}})
-        '''
-        /////////    //////////   //////////
-        //           //  //  //            //
-        //           //  //  //            //
-        //           //      //            //
-        /////////    //      //   //////////
-        '''
+
+
+'''
+COMMANDS START HERE
+'''
 
 # -- Test Command --
 @bot.command(name='test', help='Prints test message [Development Tool]')
@@ -85,14 +95,7 @@ async def test(ctx):
 @bot.command(name='dice', help='Rolls a Dice, and Returns Value!')
 async def test(ctx):
     value = random.randint(1, 6)
-    starters = [
-        'You Rolled a',
-        'And the dice hit',
-        'Looks like its a',
-        'Finally! a',
-        'Unfortunately a',
-        'You got a',
-    ]
+    starters = [ 'You Rolled a', 'And the dice hit', 'Looks like its a', 'Finally! a', 'Unfortunately a', 'You got a',]
     starter = random.randint(0, len(starters) - 1)
     await ctx.send("```{0} {1}!```".format(starters[starter], value))
 
@@ -150,7 +153,7 @@ async def test(ctx):
 async def test(ctx):
     await ctx.send("That's my line!!")
 
-@bot.command(name='version', help='Prints Version of Cinderpaw Bot Running! [Development Tools]')
+@bot.command(name='version', help='Prints Version of the Bot Running! [Development Tools]')
 async def test(ctx):
     await ctx.send('`>> Version: {0}`'.format(Version))
 # -- Ships <3 <3!!!! --
@@ -160,7 +163,7 @@ async def test(ctx, arg):
     shipValue = ship(arg.split('*')[0], arg.split('*')[1])
     await ctx.send(":heartpulse: :heartpulse: {0} x {1} is {2}%!!! :heartpulse: :heartpulse:".format(arg.split('*')[0], arg.split('*')[1], shipValue))
 
-# -- Names --
+# -- Names, inherits from pickname.py --
 
 @bot.command(name='warriorname', help='Generate a Warrior Name!')
 async def test(ctx):
@@ -173,6 +176,25 @@ async def test(ctx):
 @bot.command(name='kittyname', help='Generate a Kittypet Name!')
 async def test(ctx):
     await ctx.send(kittypetName())
+
+
+# -- Random Image, inherits from randomCat.py --
+@bot.command(name='cat', help='returns random real cat picture!')
+async def test(ctx):
+    await ctx.send(randomCat())
+
+
+# -- Wikipedia Search --
+
+@bot.command(name='wikipedia', help='return wikipedia listing for query')
+async def test(ctx, args):
+    try:
+        z = wikipedia.summary(args)
+    except: 
+        l = wikipedia.suggest(args)
+        z = "Did you mean {} Please be more specific!".format(l)
+    await ctx.send(z)
+
 
 # -- Exception Handling --
 

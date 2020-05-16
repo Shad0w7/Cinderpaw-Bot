@@ -1,0 +1,21 @@
+# [Sample].env
+# Secret file, rename to .env if you use it!
+
+/* Secret Tokens */
+DISCORD_TOKEN="TOKEN_HERE"
+
+CONNECTION_URL="MONGO_LINK_HERE"
+
+
+/* Not Secret, per say, but just helps to show which token and connection URL are being used. (Since the Connection URL shouldn't change, this is just to track the DISCORD_TOKEN changes.) */
+
+VERSION="0.1a"
+
+/* Additional .env Variables */
+
+
+/* In general just keep anything that is hard-coded and will never change, like constants that are heavily used here, so they can be changed as needed! */
+
+
+
+/* Created by Shad0w7#0320 */
