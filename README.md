@@ -28,58 +28,6 @@ Created this bot to just test things out its pretty fun
 
 ### [Or on the website](https://shad0w7.github.io/Cinderpaw-Bot/commands)
 
-### 8ball
+## Credits
 
-8ball! What else do you need??
-
-### clanname
-
-Generate a Clan Name!
-
-### credits
-
-Prints bot credits
-
-### dice
-
-Rolls a Dice, and Returns Value!
-
-### help
-
-Shows this message
-
-### kittyname
-
-Generate a Kittypet Name!
-
-### myID
-
-Returns User ID [Development Tool]
-
-### ping
-
-Pong
-
-### pong
-
-Ping
-
-### ship
-
-Do a ship, with the two names together and a "*" between them
-
-### test
-
-Prints test message [Development Tool]
-
-### version
-
-Prints Version of Cinderpaw Bot Running! [Development Tools]
-
-### warriorname
-
-Generate a Warrior Name!
-
-### xp
-
-Prints XP
+### Development: Shad0w7#0320
