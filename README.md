@@ -1,10 +1,10 @@
 # Cinderpaw Bot
 
-First Bot that I created, this one will be very very basic, and just responds to different things, and just like says hi!
+Created this bot to just test things out its pretty fun
 
 ## Cloning and Building
 
-Cinderpaw is open source, for anyone who would like to add more functionality or potentially contribute, however, if you check the .gitignore, the API Token, and MongoDB server are both in the hidden .env folder, check "sample-env.txt" and replace TOKEN and MONGO_LINK with your own generated API token and Mongo Link, or just migrate the mongo part to local json or XML however you wish!
+Check the Wiki fot building from source, and self hosting as well as editing Cinderpaw
 
 ## Commands
 
