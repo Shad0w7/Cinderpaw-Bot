@@ -1,6 +1,6 @@
 # Cinderpaw Bot
 
-Created this bot to just test things out its pretty fun
+I really only created this bot to have some fun with discord.py, and check out how bots work, without using node.js or any other icky JS stuff.
 
 ## Cloning and Building
 
