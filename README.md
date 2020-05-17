@@ -4,7 +4,11 @@ Created this bot to just test things out its pretty fun
 
 ## Cloning and Building
 
-Check the Wiki fot building from source, and self hosting as well as editing Cinderpaw
+[Check the Wiki for building from source](https://github.com/Shad0w7/Cinderpaw-Bot/wiki/Using-Cinderpaw-Yourself), and self hosting as well as editing Cinderpaw
+
+## Request Features
+
+
 
 ## Commands
 
