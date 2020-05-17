@@ -24,9 +24,9 @@ Created this bot to just test things out its pretty fun
 
 ## Commands
 
-#### [Check Commands in the Wiki](https://github.com/Shad0w7/Cinderpaw-Bot/wiki/Commands)
+### * [Check Commands in the Wiki](https://github.com/Shad0w7/Cinderpaw-Bot/wiki/Commands)
 
-#### [Or on the website](https://shad0w7.github.io/Cinderpaw-Bot/commands)
+### * [Or on the website](https://shad0w7.github.io/Cinderpaw-Bot/commands)
 
 ### 8ball
 
