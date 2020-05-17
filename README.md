@@ -8,6 +8,7 @@ Created this bot to just test things out its pretty fun
 
 ## Request Features
 
+[Go to Issues, in order to request different feautures](https://github.com/Shad0w7/Cinderpaw-Bot/issues/1) If you do not have a GitHub account, DM Shad0w7#0320 from respective servers, and I will add it too [Projects](https://github.com/Shad0w7/Cinderpaw-Bot/projects/1)
 
 
 ## Commands
