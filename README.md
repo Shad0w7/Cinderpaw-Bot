@@ -11,7 +11,7 @@ if isAwesome == true and shouldUse == true:
 ```
 
 ## Add to your server
-### ```NOTE: THE BOT IS STILL UNDER HEAVY DEVELOPMENT, AND IS NOT PERMENANTLY HOSTED, DO NOT IMPLEMENT AT THIS TIME UNLESS YOU ARE A DEV OR TESTING!!!!```
+### `NOTE: THE BOT IS STILL UNDER HEAVY DEVELOPMENT, AND IS NOT PERMENANTLY HOSTED, DO NOT IMPLEMENT AT THIS TIME UNLESS YOU ARE A DEV OR TESTING!!!!`
 * Click the title!
 * Or if your weird [this](https://discord.com/oauth2/authorize?client_id=710938688829259886&permissions=8&scope=bot) link.
 
