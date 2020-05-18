@@ -105,7 +105,6 @@ async def test(ctx):
     await ctx.send("```** Here are your Stats! ** \n| User: {0} \n| Messages Sent: {1} \n| XP: {2}```".format(ctx.author, score, xp, ))
 
 
-
 # External Imports
 
 # -- [DEVELOPER] --
