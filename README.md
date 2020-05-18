@@ -13,7 +13,7 @@ if isAwesome == true and shouldUse == true:
 ## Add to your server
 ### `NOTE: THE BOT IS STILL UNDER HEAVY DEVELOPMENT, AND IS NOT PERMENANTLY HOSTED, DO NOT IMPLEMENT AT THIS TIME UNLESS YOU ARE A DEV OR TESTING!!!!`
 * Click the title!
-* Or if your weird [this](https://discord.com/oauth2/authorize?client_id=710938688829259886&permissions=8&scope=bot) link.
+* Or if you're weird [this](https://discord.com/oauth2/authorize?client_id=710938688829259886&permissions=8&scope=bot) link.
 
 ## Request Features
 
@@ -28,6 +28,21 @@ if isAwesome == true and shouldUse == true:
 
 * If you do not have a GitHub account, DM Shad0w7#0320 from respective servers, and 
 * I will add it too [Projects](https://github.com/Shad0w7/Cinderpaw-Bot/projects/1), as well as open an issue.
+
+## Latest New Features
+
+### v0.1.0a [Initial Alpha Pre-Release]
+* [x] Just added custom XP Tracking!
+* [x] Warrior, Clan and Kittypet Name Tracking
+* [x] XP Tracking in the cloud
+
+## Upcoming Features
+
+### v0.1.1 [Server Update]
+* [ ] Server Specific Mongo Integration  [Developer]
+* [ ] Server Specific Commands, and Integration to the Cloud
+* [ ] XP Levels
+* [ ] Warrior Searchable Bio
 
 ## Commands
 
@@ -49,3 +64,5 @@ if isAwesome == true and shouldUse == true:
       || ||    || ||   ||  ||    || // //   // ||  ||  ||       \\    /////////   \\  \\    \\\   //   \\  \\
 |||||||| ||    || ||   || ||||||||  ////////// ||||||||||      \\      //  //     \\\\\\ \\\\\\  \\\\\ \\\\\\
 ```
+
+## `CREATED BY SHAD0W7#0320`
