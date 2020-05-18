@@ -31,14 +31,15 @@ if isAwesome == true and shouldUse == true:
 
 ## Latest New Features
 
-### v0.1.0a [Initial Alpha Pre-Release]
+### v0.1.0b [Cog Update]
 * [x] Just added custom XP Tracking!
 * [x] Warrior, Clan and Kittypet Name Tracking
 * [x] XP Tracking in the cloud
+* [x] Cogs
 
 ## Upcoming Features
 
-### v0.1.1 [Server Update]
+### v0.1.1a [Server Update]
 * [ ] Server Specific Mongo Integration  [Developer]
 * [ ] Server Specific Commands, and Integration to the Cloud
 * [ ] XP Levels
