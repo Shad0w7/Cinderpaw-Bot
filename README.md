@@ -2,6 +2,14 @@
 
 I really only created this bot to have some fun with discord.py, and check out how bots work, without using node.js or any other icky JS stuff.
 
+```python
+isAwesome = true
+shouldUse = true
+link = 'https://discord.com/oauth2/authorize?client_id=710938688829259886&permissions=8&scope=bot'
+if isAwesome == true and shouldUse == true:
+  print('link = {}'.format(link))
+```
+
 ## Add to your server
 
 * Click the title!
