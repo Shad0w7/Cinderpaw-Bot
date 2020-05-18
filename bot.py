@@ -1,8 +1,7 @@
 # bot.py
 
-# 
 # CREATED BY SHAD0W7#0320
-#
+# COPYRIGHT 2020 SHAD0W7#0320 SEE LICENCE FOR MORE INFO
 
 # -- General Setup --
 import os
@@ -12,19 +11,20 @@ import json
 import re
 import traceback
 import datetime
+import time
 # discord
 from discord.ext import commands
 import discord
 # pymongo
 import pymongo
 from pymongo import MongoClient
-import time
 #wikipedia
 import wikipedia
 # external files
 from resourceScripts.ships import *
 from resourceScripts.pickname import *
 from resourceScripts.randomCat import *
+
 Verbose = False
 
 # -- Loading Secret Stuff from .env 
@@ -32,6 +32,7 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 CONNECTIONURL = os.getenv('CONNECTION_URL')
 VERSION = os.getenv('VERSION')
+CONNECTBOT = os.getenv('CONNECT_BOT_URL')
 
 Version = str(VERSION)
 
@@ -47,7 +48,7 @@ If you are using a local storage system like dotENV JSON or XML, then replace th
 bot = commands.Bot(command_prefix='$')
 @bot.event
 async def on_ready():
-    print(f'{bot.user.name} has connected to Discord! [ID:{0}]'.format(bot.user.id))
+    print('{0} has connected to Discord! [ID:{1}]'.format(bot.user.name, bot.user.id))
 
 # -- Track Messages [XP] --
 @bot.event
@@ -62,7 +63,8 @@ async def on_message(ctx):
     if (collection.count_documents(myQuery) == 0):
         post = {"_id": ctx.author.id, 
                 "score": 1, 
-                "xp": 5}
+                "xp": 5,
+                "name": ctx.author,}
         collection.insert_one(post)
         await ctx.channel.send('`Congratulations! You sent your first message! Use $xp to see how much experience you have on the server!`')
         
@@ -82,46 +84,6 @@ async def on_message(ctx):
         xp = xp + z1
         collection.update_one({"_id":ctx.author.id}, {"$set":{"xp":xp}})
 
-
-'''
-COMMANDS START HERE
-'''
-# -- Roll Dice --
-@bot.command(name='dice', help='Rolls a Dice, and Returns Value!')
-async def test(ctx):
-    value = random.randint(1, 6)
-    starters = [ 'You Rolled a', 'And the dice hit', 'Looks like its a', 'Finally! a', 'Unfortunately a', 'You got a',]
-    starter = random.randint(0, len(starters) - 1)
-    await ctx.send("```{0} {1}!```".format(starters[starter], value))
-
-
-# -- [DEVELOPER] --
-@bot.command(name='myID', help='Returns User ID [Development Tool]')
-async def test(ctx):
-    id = ctx.author.id
-    await ctx.send("`>> Your ID is {0}`".format(id))
-
-@bot.command(name='test', help='Prints test message [Development Tool]')
-async def test(ctx):
-    await ctx.send("`>> Test Successful!`")
-
-@bot.command(name='version', help='Prints Version of the Bot Running! [Development Tools]')
-async def test(ctx):
-    await ctx.send('`>> Version: {0}`'.format(Version))
-
-@bot.command(name='bottime', help='Prints Current Bot Time [Development Tools]')
-async def test(ctx):
-    await ctx.send('`>> Bot Time is: {0}`'.format(datetime.datetime.now()))
-
-# -- 8 Ball --
-eightBallResponse = [ 'As I see it, yes.', 'Ask again later.', 'Better not tell you now.', 'Cannot predict now.', 'Concentrate and ask again.', 'Don’t count on it.', 'It is certain.', 'It is decidedly so.', 'Most likely.', 'My reply is no.', 'My sources say no.', 'Outlook not so good.', 'Outlook good.', 'Reply hazy, try again.', 'Signs point to yes.', 'Very doubtful.', 'Without a doubt.', 'Yes.', 'Yes – definitely.', 'You may rely on it.', ]
-
-@bot.command(name='8ball', help='8ball! What else do you need??')
-async def test(ctx):
-    eightBallNum = random.randint(0, len(eightBallResponse) - 1)
-    await ctx.send("```{0}```".format(eightBallResponse[eightBallNum]))
-
-
 # -- Get Messages Sent --
 @bot.command(name='xp', help='Prints XP')
 async def test(ctx):
@@ -140,64 +102,20 @@ async def test(ctx):
     f = y[-2].split(',')
     score = f[0]
     
-
-    # Score FINALLY done!
     await ctx.send("```** Here are your Stats! ** \n| User: {0} \n| Messages Sent: {1} \n| XP: {2}```".format(ctx.author, score, xp, ))
 
-# -- Credits --
-@bot.command(name='credits', help='Prints bot credits')
-async def test(ctx):
-    await ctx.send("`~~~~~~~ Cinderpaw, by Shad0w7#0320 ~~~~~~~`")
 
+
+# External Imports
+
+# -- [DEVELOPER] --
+bot.load_extension("cogs.developer")
 
 # -- Random Stuff --
-@bot.command(name='ping', help='Pong')
-async def test(ctx):
-    await ctx.send("pong :ping_pong:")
+bot.load_extension("cogs.random")
 
-@bot.command(name='pong', help='Ping')
-async def test(ctx):
-    await ctx.send("That's my line!!")
-
-
-# -- Ships <3 <3!!!! --
-
-@bot.command(name='ship', help='Do a ship, with the two names together and a "*" between them (Use Full Name). Example, $ship Firestar*Sandstorm')
-async def test(ctx, arg):
-    shipValue = ship(arg.split('*')[0], arg.split('*')[1])
-    await ctx.send(":heartpulse: :heartpulse: {0} x {1} is {2}%!!! :heartpulse: :heartpulse:".format(arg.split('*')[0], arg.split('*')[1], shipValue))
-
-# -- Names, inherits from pickname.py --
-
-@bot.command(name='warriorname', help='Generate a Warrior Name!')
-async def test(ctx):
-    await ctx.send(warriorName())
-
-@bot.command(name='clanname', help='Generate a Clan Name!')
-async def test(ctx):
-    await ctx.send(clanName())
-
-@bot.command(name='kittyname', help='Generate a Kittypet Name!')
-async def test(ctx):
-    await ctx.send(kittypetName())
-
-
-# -- Random Image, inherits from randomCat.py --
-@bot.command(name='cat', help='returns random real cat picture!')
-async def test(ctx):
-    await ctx.send(randomCat())
-
-
-# -- Wikipedia Search --
-
-@bot.command(name='wiki', help='return wikipedia listing for search term.')
-async def test(ctx, args):
-    try:
-        z = wikipedia.summary(args)
-    except: 
-        l = wikipedia.suggest(args)
-        z = "Did you mean {} Please be more specific!".format(l)
-    await ctx.send('```{0}```'.format(z))
+# -- Warriors --
+bot.load_extension("cogs.warriors")
 
 
 # -- Exception Handling --
