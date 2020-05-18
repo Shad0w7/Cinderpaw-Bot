@@ -1,7 +1,8 @@
 # .gitignore
 .env
 .vscode/
-.vscode/settings.json
+
 resourceScripts/__pycache__/
 cogs/.env
 cogs/__pycache__/
+CinderpawBot.code-workspace

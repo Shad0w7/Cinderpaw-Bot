@@ -88,5 +88,27 @@ class Random(commands.Cog):
         await ctx.send("```{0}```".format(eightBallResponse[eightBallNum]))
         pass
 
+
+    @commands.command(name='flip', help='heads or tails?')
+    async def flip(self, ctx):
+        s = ['It was', 'It landed', 'The coin hit', 'You got', 'Finally a', 'Unfortunately a', 'You lost its a', 'You won its a',]
+        l = ['heads', 'tails']
+        v = s[random.randint(0, len(s) -1)]
+        a = l[random.randint(0, 1)]
+        await ctx.send("```{0} {1}!```".format(v, a) )
+        pass
+
+
+    @commands.command(name='roll', help='custom dice roll, syntax: $roll <number>')
+    async def roll(self, ctx, args):
+        starters = [ 'You Rolled a', 'And the dice hit', 'Looks like its a', 'Finally! a', 'Unfortunately a', 'You got a',]
+        starter = random.randint(0, len(starters) - 1)
+        try:
+            x = random.randint(1, int(args))
+            await ctx.send("{0} {1}!".format(starters[starter], x) )
+        except:
+            await ctx.send("Please use form `$roll <Number>` ex. `$roll 9`")
+        pass
+
 def setup(bot):
     bot.add_cog(Random(bot))

@@ -5,26 +5,21 @@
 
 # -- General Setup --
 import os
-import random
-from dotenv import load_dotenv
-import json
 import re
-import traceback
-import datetime
 import time
-# discord
-from discord.ext import commands
+import json
+import random
+import datetime
+import traceback
+import wikipedia
 import discord
-# pymongo
+from discord.ext import commands
 import pymongo
 from pymongo import MongoClient
-#wikipedia
-import wikipedia
-# external files
+from dotenv import load_dotenv
 from resourceScripts.ships import *
 from resourceScripts.pickname import *
 from resourceScripts.randomCat import *
-
 Verbose = False
 
 # -- Loading Secret Stuff from .env 
@@ -34,21 +29,20 @@ CONNECTIONURL = os.getenv('CONNECTION_URL')
 VERSION = os.getenv('VERSION')
 CONNECTBOT = os.getenv('CONNECT_BOT_URL')
 
-Version = str(VERSION)
-
 # -- Setting Up for MongoDB --
 cluster = MongoClient(CONNECTIONURL)
 db = cluster["UserData"] 
 collection = db["UserData"]
-'''
-If you are using a local storage system like dotENV JSON or XML, then replace this, use the builtin data.json file for JSON.
-'''
 
 # -- Setting Up Bot Stuff --
 bot = commands.Bot(command_prefix='$')
 @bot.event
 async def on_ready():
     print('{0} has connected to Discord! [ID:{1}]'.format(bot.user.name, bot.user.id))
+
+'''
+XP Tracker is here, although is the only module that cannot be put off somwhere else, most likely server specific stuff will also stay in bot.py
+'''
 
 # -- Track Messages [XP] --
 @bot.event
@@ -105,16 +99,14 @@ async def test(ctx):
     await ctx.send("```** Here are your Stats! ** \n| User: {0} \n| Messages Sent: {1} \n| XP: {2}```".format(ctx.author, score, xp, ))
 
 
-# External Imports
+# -- Cog Imports --
 
-# -- [DEVELOPER] --
-bot.load_extension("cogs.developer")
 
-# -- Random Stuff --
-bot.load_extension("cogs.random")
+bot.load_extension("cogs.developer") # Developer
 
-# -- Warriors --
-bot.load_extension("cogs.warriors")
+bot.load_extension("cogs.random") # Random
+
+bot.load_extension("cogs.warriors") # Warriors
 
 
 # -- Exception Handling --
