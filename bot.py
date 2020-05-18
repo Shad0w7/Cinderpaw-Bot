@@ -10,6 +10,8 @@ import random
 from dotenv import load_dotenv
 import json
 import re
+import traceback
+import datetime
 # discord
 from discord.ext import commands
 import discord
@@ -84,13 +86,6 @@ async def on_message(ctx):
 '''
 COMMANDS START HERE
 '''
-
-# -- Test Command --
-@bot.command(name='test', help='Prints test message [Development Tool]')
-async def test(ctx):
-    await ctx.send("`>> Test Successful!`")
-
-
 # -- Roll Dice --
 @bot.command(name='dice', help='Rolls a Dice, and Returns Value!')
 async def test(ctx):
@@ -100,12 +95,23 @@ async def test(ctx):
     await ctx.send("```{0} {1}!```".format(starters[starter], value))
 
 
-# -- Find ID [DEVELOPER] --
+# -- [DEVELOPER] --
 @bot.command(name='myID', help='Returns User ID [Development Tool]')
 async def test(ctx):
     id = ctx.author.id
     await ctx.send("`>> Your ID is {0}`".format(id))
 
+@bot.command(name='test', help='Prints test message [Development Tool]')
+async def test(ctx):
+    await ctx.send("`>> Test Successful!`")
+
+@bot.command(name='version', help='Prints Version of the Bot Running! [Development Tools]')
+async def test(ctx):
+    await ctx.send('`>> Version: {0}`'.format(Version))
+
+@bot.command(name='bottime', help='Prints Current Bot Time [Development Tools]')
+async def test(ctx):
+    await ctx.send('`>> Bot Time is: {0}`'.format(datetime.datetime.now()))
 
 # -- 8 Ball --
 eightBallResponse = [ 'As I see it, yes.', 'Ask again later.', 'Better not tell you now.', 'Cannot predict now.', 'Concentrate and ask again.', 'Don’t count on it.', 'It is certain.', 'It is decidedly so.', 'Most likely.', 'My reply is no.', 'My sources say no.', 'Outlook not so good.', 'Outlook good.', 'Reply hazy, try again.', 'Signs point to yes.', 'Very doubtful.', 'Without a doubt.', 'Yes.', 'Yes – definitely.', 'You may rely on it.', ]
@@ -153,9 +159,7 @@ async def test(ctx):
 async def test(ctx):
     await ctx.send("That's my line!!")
 
-@bot.command(name='version', help='Prints Version of the Bot Running! [Development Tools]')
-async def test(ctx):
-    await ctx.send('`>> Version: {0}`'.format(Version))
+
 # -- Ships <3 <3!!!! --
 
 @bot.command(name='ship', help='Do a ship, with the two names together and a "*" between them (Use Full Name). Example, $ship Firestar*Sandstorm')
@@ -186,14 +190,14 @@ async def test(ctx):
 
 # -- Wikipedia Search --
 
-@bot.command(name='wikipedia', help='return wikipedia listing for query')
+@bot.command(name='wiki', help='return wikipedia listing for search term.')
 async def test(ctx, args):
     try:
         z = wikipedia.summary(args)
     except: 
         l = wikipedia.suggest(args)
         z = "Did you mean {} Please be more specific!".format(l)
-    await ctx.send(z)
+    await ctx.send('```{0}```'.format(z))
 
 
 # -- Exception Handling --
@@ -202,6 +206,12 @@ async def test(ctx, args):
 async def on_command_error(error, ctx, *args, **kwargs):
     if isinstance(error, commands.BadArgument):
         await ctx.send("No Such Command, use $help to view all available commands")
+
+
+@bot.event
+async def on_error(event, *args, **kwargs):
+    message = args[0] #Gets the message object
+    #send the message to the channel
 
 # -- Run With Token --
 bot.run(TOKEN)
