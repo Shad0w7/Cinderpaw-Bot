@@ -12,7 +12,7 @@ class Warriors(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    # -- Random Cat, inherits from names.py
+    # -- Random Cat, inherits from names.py --
     @commands.command(name='warriorname', help='Generate a Warrior Name!')
     async def warriorname(self, ctx):
         await ctx.send(warriorName())
