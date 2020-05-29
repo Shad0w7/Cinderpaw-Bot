@@ -15,6 +15,7 @@ import wikipedia
 import discord
 from discord.ext import commands
 import pymongo
+import giphypop
 from pymongo import MongoClient
 from dotenv import load_dotenv
 from resourceScripts.ships import *
@@ -107,6 +108,8 @@ bot.load_extension("cogs.developer") # Developer
 bot.load_extension("cogs.random") # Random
 
 bot.load_extension("cogs.warriors") # Warriors
+
+bot.load_extension("cogs.randomImage") # random Image
 
 
 # -- Exception Handling --

@@ -30,6 +30,11 @@ class DeveloperTools(commands.Cog):
     async def bottime(self, ctx):
         await ctx.send('`>> Bot Time is: {0}`'.format(datetime.datetime.now()))
         pass
+
+    @commands.command(name='github', help='Prints Repo Information')
+    async def bottime(self, ctx):
+        await ctx.send('Cinderpaw is Open Source! This means the code is avaliable to view at: ```https://github.com/Shad0w7/Cinderpaw-Bot```')
+        pass
     
 def setup(bot):
     bot.add_cog(DeveloperTools(bot))
