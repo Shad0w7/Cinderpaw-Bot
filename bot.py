@@ -15,9 +15,11 @@ import wikipedia
 import discord
 from discord.ext import commands
 import pymongo
-import giphypop
 from pymongo import MongoClient
 from dotenv import load_dotenv
+import giphypop
+from unsplash.api import Api
+from unsplash.auth import Auth
 from resourceScripts.ships import *
 from resourceScripts.pickname import *
 from resourceScripts.randomCat import *
@@ -124,6 +126,7 @@ async def on_command_error(error, ctx, *args, **kwargs):
 async def on_error(event, *args, **kwargs):
     message = args[0] #Gets the message object
     #send the message to the channel
+    await ctx.send("Encountered Exception, use $help to view all commands, ")
 
 # -- Run With Token --
 bot.run(TOKEN)

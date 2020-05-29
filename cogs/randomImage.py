@@ -9,14 +9,34 @@ from discord.ext import commands
 import datetime
 import os
 import giphypop
+from unsplash.api import Api
+from unsplash.auth import Auth
+
 
 VERSION = os.getenv('VERSION')
 GIPHYKEY = os.getenv('GIPHYKEY')
+UNSPLASH_ACCESS_KEY = os.getenv('UNSPLASH_ACCESS_KEY')
+UNSPLASH_SECRET_KEY = os.getenv('UNSPLASH_SECRET_KEY')
+UNSPLASH_REDIRECT_URI = os.getenv('UNSPLASH_REDIRECT_URI')
+
+# -- Initialize Photo Libraries
+
 g = giphypop.Giphy(api_key = GIPHYKEY)
+
+client_id = UNSPLASH_ACCESS_KEY
+client_secret = UNSPLASH_SECRET_KEY 
+redirect_uri = UNSPLASH_REDIRECT_URI
+code = ""
+
+auth = Auth(client_id, client_secret, redirect_uri, code=code)
+api = Api(auth)
+
 
 class RandomImage(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
+    # -- Giphy --
 
     @commands.command(name='gifcat', help='Returns random gif of cat')
     async def catgif(self, ctx):
@@ -53,7 +73,31 @@ class RandomImage(commands.Cog):
         await ctx.send("Your Result for Term:{0}:\n {1}".format(args, returnVal.url))
         pass
 
+    # -- Unsplash --
 
+    @commands.command(name='catimg', help='mrrow')
+    async def catImg(self, ctx):
+        id = ctx.author.id
+        x = api.photo.random(query="cat")
+        toReturn = 'https://unsplash.com/photos/' + str(x[0]).split("'")[1]
+        await ctx.send("Your Random Cat is {}".format(toReturn))
+        pass
+
+    @commands.command(name='dogimg', help='woof')
+    async def dogImg(self, ctx):
+        id = ctx.author.id
+        x = api.photo.random(query="dog")
+        toReturn = 'https://unsplash.com/photos/' + str(x[0]).split("'")[1]
+        await ctx.send("Your Random Dog is {}".format(toReturn))
+        pass
+
+    @commands.command(name='unsplash', help='search unsplash! [Still in Beta might raise exception]')
+    async def searchImg(self, ctx, args):
+        id = ctx.author.id
+        x = api.photo.random(query=args)
+        toReturn = 'https://unsplash.com/photos/' + str(x[0]).split("'")[1]
+        await ctx.send("Result for your search: {}".format(toReturn))
+        pass
 
     
 def setup(bot):
