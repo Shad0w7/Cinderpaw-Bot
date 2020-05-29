@@ -113,6 +113,8 @@ bot.load_extension("cogs.warriors") # Warriors
 
 bot.load_extension("cogs.randomImage") # random Image
 
+bot.load_extension("cogs.cat") # cat
+
 
 # -- Exception Handling --
 

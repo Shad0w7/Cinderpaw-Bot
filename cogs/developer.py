@@ -23,7 +23,7 @@ class DeveloperTools(commands.Cog):
 
     @commands.command(name='version', help='Prints Version of the Bot Running!')
     async def version(self, ctx):
-        await ctx.send('`>> Version: {0}`'.format(VERSION))
+        await ctx.send('`>> Token and ENV Version: {0}`'.format(VERSION))
         pass
 
     @commands.command(name='bottime', help='Prints Current Bot Time')
