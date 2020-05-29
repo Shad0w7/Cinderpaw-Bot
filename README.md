@@ -31,11 +31,13 @@ if isAwesome == true and shouldUse == true:
 
 ## Latest New Features
 
-### v0.1.0b [Cog Update]
-* [x] Just added custom XP Tracking!
+### v0.1.0c [Gif Update]
+* [x] Just added Random Cat Gifs (and alot of other random gif's too!!
+* [x] XP Tracking
 * [x] Warrior, Clan and Kittypet Name Tracking
 * [x] XP Tracking in the cloud
 * [x] Cogs
+
 
 ## Upcoming Features
 
