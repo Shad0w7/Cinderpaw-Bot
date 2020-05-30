@@ -75,7 +75,7 @@ class RandomImage(commands.Cog):
 
     # -- Unsplash --
 
-    @commands.command(name='catimg', help='mrrow')
+    @commands.command(name='cat', help='mrrow')
     async def catImg(self, ctx):
         id = ctx.author.id
         x = api.photo.random(query="cat")
@@ -83,7 +83,7 @@ class RandomImage(commands.Cog):
         await ctx.send("Your Random Cat is {}".format(toReturn))
         pass
 
-    @commands.command(name='dogimg', help='woof')
+    @commands.command(name='dog', help='woof')
     async def dogImg(self, ctx):
         id = ctx.author.id
         x = api.photo.random(query="dog")

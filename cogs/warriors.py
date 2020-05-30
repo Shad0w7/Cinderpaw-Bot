@@ -32,7 +32,7 @@ class Warriors(commands.Cog):
 
 
     # -- Random Image, inherits from randomCat.py --
-    @commands.command(name='cat', help='returns random real cat picture!')
+    @commands.command(name='WarriorCat', help='returns random real cat picture!')
     async def randomcat(self, ctx):
         await ctx.send(randomCat())
         pass

@@ -4,6 +4,10 @@ import discord
 from discord.ext import commands
 import datetime
 import sys
+from dotenv import load_dotenv
+import os
+import pymongo
+from pymongo import MongoClient
 
 # -- Loading Secret Stuff from .env 
 load_dotenv()
@@ -39,7 +43,7 @@ Bio: 500 character limit
 
 '''
 
-class CatCommand(commands.Cog):
+class CatCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 

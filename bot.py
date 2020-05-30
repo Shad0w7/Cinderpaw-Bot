@@ -3,7 +3,7 @@
 # CREATED BY SHAD0W7#0320
 # COPYRIGHT 2020 SHAD0W7#0320 SEE LICENCE FOR MORE INFO
 
-# -- General Setup --
+# -- Imports --
 import os
 import re
 import time
@@ -23,6 +23,18 @@ from unsplash.auth import Auth
 from resourceScripts.ships import *
 from resourceScripts.pickname import *
 from resourceScripts.randomCat import *
+from discord import utils, Activity, ActivityType, Client, Embed, Colour
+from discord import Member as DiscordMember
+from discord.errors import Forbidden
+from discord.ext.commands import has_permissions, Bot, Greedy
+from discord.ext.commands import BadArgument, CommandNotFound, MissingPermissions, MissingRequiredArgument
+from asyncio import sleep
+from datetime import datetime, timedelta
+from random import choice, randrange
+from sqlite3 import connect
+from sys import exit
+from traceback import format_exc
+from typing import Optional
 Verbose = False
 
 # -- Loading Secret Stuff from .env 
@@ -114,6 +126,8 @@ bot.load_extension("cogs.warriors") # Warriors
 bot.load_extension("cogs.randomImage") # random Image
 
 bot.load_extension("cogs.cat") # cat
+
+bot.load_extension("cogs.server") # server
 
 
 # -- Exception Handling --

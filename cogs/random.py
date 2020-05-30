@@ -6,6 +6,18 @@ import datetime
 import random
 import os
 import wikipedia
+from discord import utils, Activity, ActivityType, Client, Embed, Colour
+from discord import Member as DiscordMember
+from discord.errors import Forbidden
+from discord.ext.commands import has_permissions, Bot, Greedy
+from discord.ext.commands import BadArgument, CommandNotFound, MissingPermissions, MissingRequiredArgument
+from asyncio import sleep
+from datetime import datetime, timedelta
+from random import choice, randrange
+from sqlite3 import connect
+from sys import exit
+from traceback import format_exc
+from typing import Optional
 CONNECTBOT = os.getenv('CONNECT_BOT_URL')
 eightBallResponse = [ 'As I see it, yes.', 'Ask again later.', 'Better not tell you now.', 'Cannot predict now.', 'Concentrate and ask again.', 'Don’t count on it.', 'It is certain.', 'It is decidedly so.', 'Most likely.', 'My reply is no.', 'My sources say no.', 'Outlook not so good.', 'Outlook good.', 'Reply hazy, try again.', 'Signs point to yes.', 'Very doubtful.', 'Without a doubt.', 'Yes.', 'Yes – definitely.', 'You may rely on it.', ]
 class Random(commands.Cog):
@@ -109,6 +121,29 @@ class Random(commands.Cog):
         except:
             await ctx.send("Please use form `$roll <Number>` ex. `$roll 9`")
         pass
+
+    @commands.command(name='user', help='return full userdata')
+    async def roll(self, ctx, Target:Optional[DiscordMember]):
+        if Target is None:
+            Target = ctx.author
+
+        header = f"User information - {Target.display_name}\n\n"
+        rows = {
+            "Account name"     : Target.name,
+            "Discriminator"    : Target.discriminator,
+            "ID"               : Target.id,
+            "Is bot"           : "Yes" if Target.bot else "No",
+            "Top role"         : Target.top_role,
+            "Nº of roles"      : len(Target.roles),
+            "Current status"   : str(Target.status).title(),
+            "Current activity" : f"{str(Target.activity.type).title().split('.')[1]} {Target.activity.name}" if Target.activity is not None else "None",
+            "Created at"       : Target.created_at.strftime("%d/%m/%Y %H:%M:%S"),
+            "Joined at"        : Target.joined_at.strftime("%d/%m/%Y %H:%M:%S"),
+        }
+
+        table = header + "\n".join([f"{key}{' '*(max([len(key) for key in rows.keys()])+2-len(key))}{value}" for key, value in rows.items()])
+        await ctx.send(f"```{table}```{Target.avatar_url}")
+
 
 def setup(bot):
     bot.add_cog(Random(bot))
