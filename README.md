@@ -1,4 +1,4 @@
-# [Cinderpaw Bot](https://discord.com/oauth2/authorize?client_id=710938688829259886&permissions=8&scope=bot)
+# [Cinderpaw Bot](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 I really only created this bot to have some fun with discord.py, and check out how bots work, without using node.js or any other icky JS stuff.
 
